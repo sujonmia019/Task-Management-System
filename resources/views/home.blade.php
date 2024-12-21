@@ -58,7 +58,7 @@
             },
             columns: [
                 {data: 'DT_RowIndex'},
-                {data: 'name'},
+                {data: 'title'},
                 {data: 'description'},
                 {data: 'priority'},
                 {data: 'status'},
@@ -67,10 +67,9 @@
                 {data: 'action'}
             ],
             language: {
-                // processing: '<img src="{{ asset("img/table-loading.svg") }}">',
-                emptyTable: '<strong class="text-danger">No Data Found</strong>',
+                emptyTable: '<span class="text-danger">No Data Found</span>',
                 infoEmpty: '',
-                zeroRecords: '<strong class="text-danger">No Data Found</strong>',
+                zeroRecords: '<span class="text-danger">No Data Found</span>',
                 paginate: {
                     previous: "Previous",
                     next: "Next"
@@ -78,7 +77,6 @@
                 lengthMenu: `<div class="d-flex align-items-center w-100 justify-content-between">
                         _MENU_
                         <button type="button" class="btn btn-sm btn-danger d-none rounded-0 delete_btn ms-2 px-3" onclick="multi_delete()">Bulk Delete</button>
-                        <input name="search_here" class="form-control-sm form-control ms-2" placeholder="Search here..." autocomplete="off"/>
                     </div>`,
             },
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6 text-end'B>>" +

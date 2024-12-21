@@ -44,10 +44,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }} btn-grad" aria-current="page" href="{{ url('/') }}"> <i class="fa-solid fa-th-large"></i> Task List</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}"> <i class="fa-solid fa-th-large"></i> Task List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('tasks/create') ? 'active' : '' }} btn-grad" aria-current="page" href="{{ url('tasks/create') }}"> <i class="fa-solid fa-plus fa-sm"></i> Add Task</a>
+                    <button type="button" class="nav-link add_task"> <i class="fa-solid fa-plus fa-sm"></i> Add Task</button>
                 </li>
             </ul>
         </div>
