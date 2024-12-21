@@ -27,11 +27,16 @@
     </div>
 </div>
 
+@include('store_or_update_task')
+
 @endSection
 
 @push('scripts')
     <script>
-        var table = new DataTable('#task-datatable', {
+        var popup_modal;
+        var table;
+
+        table = new DataTable('#task-datatable', {
             processing: true,
             serverSide: true,
             responsive: true,
@@ -88,6 +93,74 @@
                     className: 'btn btn-sm btn-info export_btn'
                 }
             ]
+        });
+
+        popup_modal = new bootstrap.Modal(document.getElementById('store_or_update_modal'),{
+            keyboard: false,
+            backdrop: 'static'
+        });
+
+        // show modal
+        function showFormModal(modal_title, btn_text) {
+            popup_modal.show();
+            $('#store_or_update_form')[0].reset();
+            $('#store_or_update_form #update_id').val('');
+            $('#store_or_update_form').find('.is-invalid').removeClass('is-invalid');
+            $('#store_or_update_form').find('.error').remove();
+            $('#store_or_update_modal .modal-title').html(modal_title);
+            $('#store_or_update_modal #save_btn').html('<span></span> '+btn_text);
+        }
+
+        // update or create menu
+        $(document).on('click','#save_btn',function(e){
+            var form = document.getElementById('store_or_update_form');
+            var formData = new FormData(form);
+            var method;
+            var update_id = $('#update_id').val();
+            if(update_id){
+                method = 'update';
+            }else{
+                method = 'add';
+            }
+            $.ajax({
+                url: "",
+                type: "POST",
+                data: formData,
+                dataType: "JSON",
+                contentType: false,
+                processData: false,
+                cache: false,
+                beforeSend: function(){
+                    $('#save_btn span').addClass('spinner-border spinner-border-sm text-light');
+                },
+                complete: function(){
+                    $('#save_btn span').removeClass('spinner-border spinner-border-sm text-light');
+                },
+                success: function (data) {
+                    $('#store_or_update_form').find('.is-invalid').removeClass('is-invalid');
+                    $('#store_or_update_form').find('.error').remove();
+                    if (data.status == false) {
+                        $.each(data.errors, function (key, value) {
+                            $('#store_or_update_form #' + key).addClass('is-invalid');
+                            $('#store_or_update_form #' + key).parent().append(
+                                '<small class="error text-danger">' + value + '</small>');
+                        });
+                    } else {
+                        notification(data.status, data.message);
+                        if (data.status == 'success') {
+                            if (method == 'update') {
+                                table.ajax.reload(null, false);
+                            } else {
+                                table.ajax.reload();
+                            }
+                            popup_modal.hide();
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOption, thrownError) {
+                    console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
+                }
+            });
         });
     </script>
 @endpush

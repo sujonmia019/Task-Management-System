@@ -13,6 +13,45 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
+    <style>
+         small {
+            font-size: 13px;
+        }
+
+        input::placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        input:-ms-input-placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        input::-ms-input-placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        input::-webkit-input-placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        input::-moz-placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        input:-moz-placeholder {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        label{
+            font-size: 13px;
+            color: #000000;
+            font-weight: 400;
+        }
+        .required::after{
+            content: '*';
+            color: red;
+        }
+    </style>
     @stack('styles')
 </head>
 <body>
@@ -41,17 +80,12 @@
 
     <script>
         var _token = "{{ csrf_token() }}";
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
 
         $(".datetime").flatpickr({
             enableTime: true,
             noCalendar: false,
             time_24hr: true,
         });
-
-        $(".dateonly").flatpickr();
 
     </script>
     @stack('scripts')

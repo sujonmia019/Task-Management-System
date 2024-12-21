@@ -47,7 +47,7 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}"> <i class="fa-solid fa-th-large"></i> Task List</a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link add_task"> <i class="fa-solid fa-plus fa-sm"></i> Add Task</button>
+                    <button type="button" class="nav-link" onclick="showFormModal('New Task','Save')"> <i class="fa-solid fa-plus fa-sm"></i> Add Task</button>
                 </li>
             </ul>
         </div>

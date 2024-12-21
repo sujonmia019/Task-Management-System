@@ -38,7 +38,6 @@
             font-size: 13px;
             font-weight: 400;
         }
-
     </style>
     @stack('styles')
 </head>
