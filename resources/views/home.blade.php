@@ -9,6 +9,17 @@
     #task-datatable_info {
         font-size: 14px;
     }
+    h2#swal2-title {
+        font-size: 22px;
+    }
+    .swal2-actions button {
+        padding: 7px 15px;
+        font-size: 14px;
+        border-radius: 0 !important;
+    }
+    div:where(.swal2-container) div:where(.swal2-popup) {
+        width: 28em !important;
+    }
 </style>
 @endpush
 
@@ -40,6 +51,7 @@
 @endSection
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // autoUpdateInput: false,
         // locale: daterangeLocale,
@@ -120,7 +132,7 @@
                 </select>
                 <button type="button" class="btn btn-sm btn-primary rounded-0 shadow-none" id="filter">Filter</button>
                 <button type="button" class="btn btn-sm btn-danger rounded-0 shadow-none mx-2" id="reset">Reset</button>
-                <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" id="reset" title="Task Board"><i class="fa fa-list"></i></a>
+                <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" id="reset" title="Task Board"><i class="fa fa-bars"></i></a>
             </div>
         `);
 
@@ -194,6 +206,45 @@
                 },
                 error: function (xhr, ajaxOption, thrownError) {
                     console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
+                }
+            });
+        });
+
+        $(document).on('click', '.delete_data', function () {
+            let id   = $(this).data('id');
+            let name = $(this).data('name');
+            let row  = table.row($(this).parent('tr'));
+            let url  = "{{ route('app.tasks.delete') }}";
+
+            Swal.fire({
+                title: 'Are you sure to delete ' + name + ' data?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Confirm',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: {id:id,_token:_token},
+                        dataType: "JSON",
+                    }).done(function (response) {
+                        if (response.status == "success") {
+                            Swal.fire("Deleted", response.message, "success").then(function () {
+                                table.row(row).remove().draw(false);
+                            });
+                        }
+
+                        if (response.status == "error") {
+                            Swal.fire('Oops...', response.message, "error");
+                        }
+                    }).fail(function () {
+                        Swal.fire('Oops...', "Somthing went wrong with ajax!", "error");
+                    });
                 }
             });
         });

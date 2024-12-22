@@ -34,7 +34,7 @@ class TaskController extends Controller
                 ->addColumn('action', function($row){
                     $action = '<div class="d-flex align-items-center">';
                         $action .= '<button type="button" class="btn-style btn-style-edit edit_data me-1" data-id="' . $row->id . '"><i class="fa fa-edit"></i></button>';
-                        $action .= '<button type="button" class="btn-style btn-style-danger delete_data" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button>';
+                        $action .= '<button type="button" class="btn-style btn-style-danger delete_data" data-id="' . $row->id . '" data-name="'.$row->title.'"><i class="fa fa-trash"></i></button>';
                     $action .= '</div>';
                     return $action;
                 })
@@ -67,7 +67,14 @@ class TaskController extends Controller
      */
     public function edit(Request $request)
     {
-        //
+        if($request->ajax()){
+            $data = Task::find($request->id);
+            if($data){
+                return response()->json(['status' => 'success', 'data' => $data]);
+            }else{
+                return response()->json(['status' => 'error', 'message' => 'Data not found']);
+            }
+        }
     }
 
     /**
@@ -75,7 +82,15 @@ class TaskController extends Controller
      */
     public function delete(Request $request)
     {
-        //
+        if($request->ajax()){
+            $result = Task::find($request->id);
+            if($result){
+                $result->delete();
+                return response()->json(['status' => 'success', 'message' => 'Task deleted successfully.']);
+            }else{
+                return response()->json(['status' => 'error', 'message' => 'Data not found']);
+            }
+        }
     }
 
     public function listLayout(){
