@@ -14,7 +14,7 @@ The Task Management System is a web application that allows users to manage thei
 
 ## Task GUI
 1. Login
-<img src="https://drive.google.com/file/d/1vV0dBqJYAYzzbBfsZY-gjnxYRr_GKSfR/view?usp=sharing" width="400">
+<img src="https://myolbd.com/image/login.png" width="400">
 
 2. Register
 <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
