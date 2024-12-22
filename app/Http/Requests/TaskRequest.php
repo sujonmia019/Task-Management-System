@@ -29,6 +29,10 @@ class TaskRequest extends FormRequest
             'status'      => ['required','integer','in:1,2,3'],
         ];
 
+        if(request()->task_board == 'task_board'){
+            $rules['status'][0] = 'nullable';
+        }
+
         return $rules;
     }
 }

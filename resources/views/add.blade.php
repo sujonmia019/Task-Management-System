@@ -8,7 +8,9 @@
             <div class="modal-body">
                 <form id="store_or_update_form" method="POST">
                     @csrf
+                    <input type="hidden" id="status" name="status">
                     <input type="hidden" id="update_id" name="update_id">
+                    <input type="hidden" id="task_board" name="task_board" value="task_board">
                     <div class="mb-3">
                         <label for="title" class="required">Title</label>
                         <input type="text" name="title" id="title" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Enter title">
@@ -26,15 +28,6 @@
                         <select name="priority" id="priority" class="form-control form-control-sm rounded-0 shadow-none">
                             <option value="">Select Priority</option>
                             @foreach (PRIORITY as $key=>$value)
-                            <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="required">Status</label>
-                        <select name="status" id="status" class="form-control form-control-sm rounded-0 shadow-none">
-                            <option value="">Select Status</option>
-                            @foreach (STATUS as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>

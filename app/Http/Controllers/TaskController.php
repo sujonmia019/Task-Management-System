@@ -26,10 +26,10 @@ class TaskController extends Controller
                     return PRIORITY_LABEL[$row->priority];
                 })
                 ->addColumn('due_date', function($row){
-                    return dateTimeFormat($row->due_date);
+                    return $row->due_date ? dateTimeFormat($row->due_date) : '';
                 })
                 ->addColumn('created_at', function($row){
-                    return dateTimeFormat($row->created_at);
+                    return dateFormat($row->created_at);
                 })
                 ->addColumn('action', function($row){
                     $action = '<div class="d-flex align-items-center">';
@@ -59,7 +59,6 @@ class TaskController extends Controller
                 return response()->json(['status' => 'success', 'message' => 'Task added successfully.']);
             }
             return response()->json(['status' => 'error', 'message' => 'Data could not be saved!']);
-
         }
     }
 
@@ -80,9 +79,23 @@ class TaskController extends Controller
     }
 
     public function listLayout(){
-        $data['pendings']   = DB::table('tasks')->where('status',1)->get();
-        $data['inProgress'] = DB::table('tasks')->where('status',2)->get();
-        $data['completed']  = DB::table('tasks')->where('status',3)->get();
+        $data['pendings']   = DB::table('tasks')->where(['status'=>1,'user_id'=>auth()->user()->id])->get();
+        $data['inProgress'] = DB::table('tasks')->where(['status'=>2,'user_id'=>auth()->user()->id])->get();
+        $data['completed']  = DB::table('tasks')->where(['status'=>3,'user_id'=>auth()->user()->id])->get();
         return view('task-list',$data);
+    }
+
+    public function storeOrUpdateTask(TaskRequest $request){
+        if($request->ajax()){
+            $collection = collect($request->validated());
+            $collection = $collection->merge(['user_id' => auth()->user()->id]);
+            $result = Task::updateOrCreate(['id' => $request->update_id], $collection->all());
+
+            if ($result) {
+                return response()->json(['status' => 'success', 'message' => 'Task added successfully.']);
+            }
+            return response()->json(['status' => 'error', 'message' => 'Data could not be saved!']);
+
+        }
     }
 }

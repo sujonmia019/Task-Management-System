@@ -27,6 +27,12 @@ define('PRIORITY_LABEL',[
     4 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Low</span>',
 ]);
 
+if(!function_exists('dateFormat')){
+    function dateFormat($date, $format = 'd-m-Y'){
+        return date($format,strtotime($date));
+    }
+}
+
 if(!function_exists('dateTimeFormat')){
     function dateTimeFormat($date, $format = 'd-m-Y h:i'){
         return date($format,strtotime($date));

@@ -125,7 +125,7 @@
         `);
 
         $("#due_date").flatpickr({
-            enableTime: true,
+            enableTime: false,
             noCalendar: false,
             time_24hr: false,
         });
