@@ -13,25 +13,32 @@ The Task Management System is a web application that allows users to manage thei
 
 ## Installation Instructions
 1. Clone the repository:
+
    ```bash
     git clone https://github.com/sujonmia019/Task-Management-System.git
+
 2. Navigate to the project directory
+
     ```bash
     cd task-management-system
 
 3. Install dependencies using Composer
+
     ```bash
     composer install
 
 4. Copy the .env.example file to .env
+
     ```bash
     cp .env.example .env
 
 5. Generate the application key
+
     ```bash
     php artisan key:generate
 
 6. Set up your database connection in the .env file
+
     ```bash
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -41,10 +48,12 @@ The Task Management System is a web application that allows users to manage thei
     DB_PASSWORD=your_database_password
 
 7. Generate the application key
+
     ```bash
     php artisan migrate
 
 8. Start the development server
+
     ```bash
     php artisan migrate
 
