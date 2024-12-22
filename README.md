@@ -5,7 +5,7 @@ The Task Management System is a web application that allows users to manage thei
 
 ## Features
 - **Register, Login, and Logout**
-- **Create, Read, Update, and Delete tasks**
+- **Task Create, Read, Update, and Delete tasks**
 - **Filter tasks by status (Pending, In Progress, Completed)**
 - **Sort tasks by due date**
 - **Fully functional UI optimized for desktop**
