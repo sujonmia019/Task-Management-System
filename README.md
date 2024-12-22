@@ -20,7 +20,7 @@ The Task Management System is a web application that allows users to manage thei
 2. Navigate to the project directory
 
     ```bash
-    cd task-management-system
+    cd Task-Management-System
 
 3. Install dependencies using Composer
 
