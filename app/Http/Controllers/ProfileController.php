@@ -11,4 +11,16 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('profile',compact('user'));
     }
+
+    public function profileUpdate(Request $request){
+        if($request->ajax()){
+
+        }
+    }
+
+    public function passwordUpdate(Request $request){
+        if($request->ajax()){
+
+        }
+    }
 }
