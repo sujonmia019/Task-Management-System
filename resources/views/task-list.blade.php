@@ -152,10 +152,10 @@
                 processData: false,
                 cache: false,
                 beforeSend: function(){
-                    $('#save_btn span').addClass('spinner-border spinner-border-sm text-light');
+                    $('#save_btn span').addClass('spinner-border spinner-border-sm text-primary');
                 },
                 complete: function(){
-                    $('#save_btn span').removeClass('spinner-border spinner-border-sm text-light');
+                    $('#save_btn span').removeClass('spinner-border spinner-border-sm text-primary');
                 },
                 success: function (data) {
                     $('#store_or_update_form').find('.is-invalid').removeClass('is-invalid');

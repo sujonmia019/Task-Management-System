@@ -53,14 +53,6 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // autoUpdateInput: false,
-        // locale: daterangeLocale,
-        // linkedCalendars: false,
-        // startDate: start,
-        // endDate: end,
-        // showDropdowns: true,
-        // ranges: daterangeConfig
-
         var popup_modal;
         var table;
 
@@ -117,7 +109,7 @@
         // custom field datatable
         $('.dt-length label').append(`
             <div class="d-flex align-items-center">
-                <input type="text" id="daterange" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="Due Date">
+                <input type="text" id="datepicker" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="Due Date">
                 <input type="hidden" id="start_date">
                 <input type="hidden" id="end_date">
                 <select class="form-control form-control-sm rounded-0 shadow-none" id="filter_status" style="min-width:200px;">
@@ -139,6 +131,7 @@
         `);
 
         $(document).on('click','#reset',function(){
+            $('#datepicker').val('');
             $('#start_date').val('');
             $('#end_date').val('');
             $('#filter_status').val('');
@@ -150,6 +143,40 @@
             table.ajax.reload();
         });
 
+        // daterange picker
+        $('#datepicker').daterangepicker({
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment(),
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            autoUpdateInput: false,
+            linkedCalendars: false,
+            showDropdowns: true,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('#datepicker').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' to ' + picker.endDate.format('YYYY-MM-DD'));
+            $('#start_date').val(picker.startDate.format('YYYY-MM-DD'));
+            $('#end_date').val(picker.endDate.format('YYYY-MM-DD'));
+        });
+
+        $('#datepicker').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+            $('#start_date').val('');
+            $('#end_date').val('');
+        });
+
+
+        // date picker
         $("#due_date").flatpickr({
             enableTime: false,
             noCalendar: false,
@@ -192,10 +219,10 @@
                 processData: false,
                 cache: false,
                 beforeSend: function(){
-                    $('#save_btn span').addClass('spinner-border spinner-border-sm text-light');
+                    $('#save_btn span').addClass('spinner-border spinner-border-sm text-primary');
                 },
                 complete: function(){
-                    $('#save_btn span').removeClass('spinner-border spinner-border-sm text-light');
+                    $('#save_btn span').removeClass('spinner-border spinner-border-sm text-primary');
                 },
                 success: function (data) {
                     $('#store_or_update_form').find('.is-invalid').removeClass('is-invalid');
