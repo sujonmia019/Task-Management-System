@@ -109,9 +109,9 @@ class TaskController extends Controller
     }
 
     public function listLayout(){
-        $data['pendings']   = DB::table('tasks')->where(['status'=>1,'user_id'=>auth()->user()->id])->get();
-        $data['inProgress'] = DB::table('tasks')->where(['status'=>2,'user_id'=>auth()->user()->id])->get();
-        $data['completed']  = DB::table('tasks')->where(['status'=>3,'user_id'=>auth()->user()->id])->get();
+        $data['pendings']   = DB::table('tasks')->where(['status'=>1,'user_id'=>auth()->user()->id])->orderBy('due_date','ASC')->get();
+        $data['inProgress'] = DB::table('tasks')->where(['status'=>2,'user_id'=>auth()->user()->id])->orderBy('due_date','ASC')->get();
+        $data['completed']  = DB::table('tasks')->where(['status'=>3,'user_id'=>auth()->user()->id])->orderBy('due_date','ASC')->get();
         return view('task-list',$data);
     }
 
