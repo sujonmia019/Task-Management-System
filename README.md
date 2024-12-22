@@ -67,7 +67,6 @@ The Task Management System is a web application that allows users to manage thei
     ```bash
     php artisan migrate
 
-
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
