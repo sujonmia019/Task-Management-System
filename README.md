@@ -3,6 +3,14 @@
 ## Project Description
 The Task Management System is a web application that allows users to manage their tasks efficiently. It includes features for user authentication, task creation, updating, deletion, and filtering. Users can filter tasks by status (e.g., Pending, In Progress, Completed) and sort them by due date.
 
+## Features
+- **Register, Login, and Logout**
+- **Create, Read, Update, and Delete tasks**
+- **Filter tasks by status (Pending, In Progress, Completed)**
+- **Sort tasks by due date**
+- **Fully functional UI optimized for desktop**
+
+
 ## Tech Stack
 - **PHP**: 8.2
 - **Backend Framework**: Laravel 10x
