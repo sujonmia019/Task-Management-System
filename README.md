@@ -10,6 +10,7 @@ The Task Management System is a web application that allows users to manage thei
 - **Sort tasks by due date**
 - **Task Board List from Create, Update**
 - **Task Create, Update Form Validation Using**
+- **Task List Server-Side Datatable Uses**
 - **Fully functional UI optimized for desktop**
 
 ## Features
