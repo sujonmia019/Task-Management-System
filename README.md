@@ -32,7 +32,7 @@ The Task Management System is a web application that allows users to manage thei
     php artisan key:generate
 
 6. Set up your database connection in the .env file
-    ```makefile
+    ```bash
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
