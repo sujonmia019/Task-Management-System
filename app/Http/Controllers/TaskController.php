@@ -27,8 +27,8 @@ class TaskController extends Controller
                         $query->where('priority', $request->priority);
                     }
                     if (!empty($request->start_date) && !empty($request->end_date)) {
-                        $query->whereDate('due_date','>=',$request->start_date)
-                            ->whereDate('due_date','<=',$request->end_date);
+                        $query->whereDate('created_at','>=',$request->start_date)
+                            ->whereDate('created_at','<=',$request->end_date);
                     }
                 })
                 ->addColumn('status', function($row){

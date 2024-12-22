@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->enum('priority', [1,2,3,4])->comment('1 = Urgent, 2 = High, 3 = Medium, 4 = Low');
-            $table->enum('status', [1,2,3])->default(1)->comment('1 = Pending, 2 = In Progress, 3 = Completed');
+            $table->enum('status', [1,2,3])->comment('1 = Pending, 2 = In Progress, 3 = Completed');
             $table->date('due_date')->nullable();
             $table->timestamps();
         });

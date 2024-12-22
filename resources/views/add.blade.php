@@ -1,4 +1,4 @@
-<div class="modal fade" id="store_or_update_modal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="tast_add_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content rounded-1">
             <div class="modal-header py-1">
@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close shadow-none" style="font-size: 10px;" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="store_or_update_form" method="POST">
+                <form id="tast_add_form" method="POST">
                     @csrf
                     <input type="hidden" id="status" name="status">
                     <input type="hidden" id="update_id" name="update_id">

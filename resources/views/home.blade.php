@@ -109,7 +109,7 @@
         // custom field datatable
         $('.dt-length label').append(`
             <div class="d-flex align-items-center">
-                <input type="text" id="datepicker" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="Due Date">
+                <input type="text" id="datepicker" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="YYYY-MM-DD to YYYY-MM-DD">
                 <input type="hidden" id="start_date">
                 <input type="hidden" id="end_date">
                 <select class="form-control form-control-sm rounded-0 shadow-none" id="filter_status" style="min-width:200px;">
@@ -126,7 +126,7 @@
                 </select>
                 <button type="button" class="btn btn-sm btn-primary rounded-0 shadow-none" id="filter">Filter</button>
                 <button type="button" class="btn btn-sm btn-danger rounded-0 shadow-none mx-2" id="reset">Reset</button>
-                <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" id="reset" title="Task Board"><i class="fa fa-bars"></i></a>
+                <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" title="Task Board"><i class="fa fa-bars"></i></a>
             </div>
         `);
 

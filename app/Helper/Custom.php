@@ -9,7 +9,7 @@ define('STATUS',[
 
 define('STATUS_LABEL',[
     1 => '<span class="rounded-0 fw-normal badge badge-sm bg-danger">Pending</span>',
-    2 => '<span class="rounded-0 fw-normal badge badge-sm bg-warning">In Progress</span>',
+    2 => '<span class="rounded-0 fw-normal badge badge-sm bg-warning text-dark">In Progress</span>',
     3 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Completed</span>',
 ]);
 
@@ -22,7 +22,7 @@ define('PRIORITY',[
 
 define('PRIORITY_LABEL',[
     1 => '<span class="rounded-0 fw-normal badge badge-sm bg-danger">Urgent</span>',
-    2 => '<span class="rounded-0 fw-normal badge badge-sm bg-warning">High</span>',
+    2 => '<span class="rounded-0 fw-normal badge badge-sm bg-warning text-dark">High</span>',
     3 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Medium</span>',
     4 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Low</span>',
 ]);
