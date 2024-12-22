@@ -17,28 +17,25 @@ The Task Management System is a web application that allows users to manage thei
 <img src="https://myolbd.com/image/login.png" width="100%">
 
 2. Register
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/register.png" width="100%">
 
 3. Task List With Filter
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/task-list.png" width="100%">
 
-4. Task Board View
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
-
-5. Add Task
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+4. Add Task
+<img src="https://myolbd.com/image/create-task.png" width="100%">
 
 6. Edit/Update Task
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/edit-update-task.png" width="100%">
 
 7. Delete Task
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/delete-task.png" width="100%">
 
 8. Task Board View
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/task-board.png" width="100%">
 
 9. Task Board Create 
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://myolbd.com/image/board-add-task.png" width="100%">
 
 ## Tech Stack
 - **PHP**: 8.2
