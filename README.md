@@ -1,4 +1,4 @@
-### Task Management System
+# Task Management System
 
 ## Project Description
 The Task Management System is a web application that allows users to manage their tasks efficiently. It includes features for user authentication, task creation, updating, deletion, and filtering. Users can filter tasks by status (e.g., Pending, In Progress, Completed) and sort them by due date.
