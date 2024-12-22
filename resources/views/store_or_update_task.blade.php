@@ -18,7 +18,7 @@
                         <textarea name="description" id="description" rows="3" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Enter task description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="due_date">Due Date</label>
+                        <label for="due_date" class="required">Due Date</label>
                         <input type="text" name="due_date" id="due_date" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Y-m-d" autocomplete="off">
                     </div>
                     <div class="mb-3">

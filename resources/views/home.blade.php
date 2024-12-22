@@ -79,6 +79,7 @@
                     d.end_date   = $('#end_date').val();
                     d.status     = $('#filter_status').val();
                     d.priority   = $('#filter_priority').val();
+                    d.sort_by    = $('#sort_by').val();
                 },
             },
             columns: [
@@ -124,6 +125,11 @@
                     <option value="{{ $key }}">{{ $value }}</option>
                     @endforeach
                 </select>
+                <select class="form-control form-control-sm rounded-0 shadow-none" id="sort_by" style="min-width:200px;">
+                    <option value="">Sort By Due Date</option>
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
                 <button type="button" class="btn btn-sm btn-primary rounded-0 shadow-none" id="filter">Filter</button>
                 <button type="button" class="btn btn-sm btn-danger rounded-0 shadow-none mx-2" id="reset">Reset</button>
                 <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" title="Task Board"><i class="fa fa-bars"></i></a>
@@ -136,6 +142,7 @@
             $('#end_date').val('');
             $('#filter_status').val('');
             $('#filter_priority').val('');
+            $('#sort_by').val('');
             table.ajax.reload();
         });
 

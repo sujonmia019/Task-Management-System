@@ -24,7 +24,7 @@ class TaskRequest extends FormRequest
         $rules = [
             'title'       => ['required','string','max:150'],
             'description' => ['required','string'],
-            'due_date'    => ['nullable'],
+            'due_date'    => ['required'],
             'priority'    => ['required','integer','in:1,2,3,4'],
             'status'      => ['required','integer','in:1,2,3'],
         ];

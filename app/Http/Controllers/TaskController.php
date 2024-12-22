@@ -16,10 +16,13 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            $getData = Task::where('user_id',auth()->user()->id)->orderBy('created_at','desc');
+            $getData = Task::where('user_id',auth()->user()->id);
             return DataTables::eloquent($getData)
                 ->addIndexColumn()
                 ->filter(function ($query) use ($request) {
+                    if (!empty($request->sort_by)) {
+                        $query->orderBy('due_date', $request->sort_by);
+                    }
                     if (!empty($request->status)) {
                         $query->where('status', $request->status);
                     }
