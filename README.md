@@ -13,29 +13,35 @@ The Task Management System is a web application that allows users to manage thei
 - **Fully functional UI optimized for desktop**
 
 ## Task GUI
-1. Login
+- **1. Login**
 <img src="https://myolbd.com/image/login.png" width="100%">
 
-2. Register
+- **2. Register**
 <img src="https://myolbd.com/image/register.png" width="100%">
 
-3. Task List With Filter
+- **3. Profile/Password Update**
+<img src="https://myolbd.com/image/profile.png" width="100%">
+
+- **4. Task List With Filter**
 <img src="https://myolbd.com/image/task-list.png" width="100%">
 
-4. Add Task
+- **5. Add Task**
 <img src="https://myolbd.com/image/create-task.png" width="100%">
 
-6. Edit/Update Task
+- **6. Edit/Update Task**
 <img src="https://myolbd.com/image/edit-update-task.png" width="100%">
 
-7. Delete Task
+- **7. Delete Task**
 <img src="https://myolbd.com/image/delete-task.png" width="100%">
 
-8. Task Board View
+- **8. Task Board View**
 <img src="https://myolbd.com/image/task-board.png" width="100%">
 
-9. Task Board Create 
+- **9. Task Board Create**
 <img src="https://myolbd.com/image/board-add-task.png" width="100%">
+
+- **10. Task Board Update**
+<img src="https://myolbd.com/image/board-edit-task.png" width="100%">
 
 ## Tech Stack
 - **PHP**: 8.2
