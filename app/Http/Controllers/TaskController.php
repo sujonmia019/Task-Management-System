@@ -19,6 +19,18 @@ class TaskController extends Controller
             $getData = Task::where('user_id',auth()->user()->id)->orderBy('created_at','desc');
             return DataTables::eloquent($getData)
                 ->addIndexColumn()
+                ->filter(function ($query) use ($request) {
+                    if (!empty($request->status)) {
+                        $query->where('status', $request->status);
+                    }
+                    if (!empty($request->priority)) {
+                        $query->where('priority', $request->priority);
+                    }
+                    if (!empty($request->start_date) && !empty($request->end_date)) {
+                        $query->whereDate('due_date','>=',$request->start_date)
+                            ->whereDate('due_date','<=',$request->end_date);
+                    }
+                })
                 ->addColumn('status', function($row){
                     return STATUS_LABEL[$row->status];
                 })
@@ -26,10 +38,10 @@ class TaskController extends Controller
                     return PRIORITY_LABEL[$row->priority];
                 })
                 ->addColumn('due_date', function($row){
-                    return $row->due_date ? dateTimeFormat($row->due_date) : '';
+                    return $row->due_date ? dateFormat($row->due_date) : '';
                 })
                 ->addColumn('created_at', function($row){
-                    return dateFormat($row->created_at);
+                    return dateTimeFormat($row->created_at);
                 })
                 ->addColumn('action', function($row){
                     $action = '<div class="d-flex align-items-center">';

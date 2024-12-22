@@ -83,10 +83,10 @@
                 dataType: "JSON",
                 data: function (d) {
                     d._token     = _token;
-                    d.start_date = $('input[name="start_date"]').val();
-                    d.end_date   = $('input[name="end_date"]').val();
-                    d.status     = $('select#status').val();
-                    d.priority   = $('select#priority').val();
+                    d.start_date = $('#start_date').val();
+                    d.end_date   = $('#end_date').val();
+                    d.status     = $('#filter_status').val();
+                    d.priority   = $('#filter_priority').val();
                 },
             },
             columns: [
@@ -118,6 +118,8 @@
         $('.dt-length label').append(`
             <div class="d-flex align-items-center">
                 <input type="text" id="daterange" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="Due Date">
+                <input type="hidden" id="start_date">
+                <input type="hidden" id="end_date">
                 <select class="form-control form-control-sm rounded-0 shadow-none" id="filter_status" style="min-width:200px;">
                     <option value="">Select Status</option>
                     @foreach (STATUS as $key=>$value)
@@ -135,6 +137,18 @@
                 <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" id="reset" title="Task Board"><i class="fa fa-bars"></i></a>
             </div>
         `);
+
+        $(document).on('click','#reset',function(){
+            $('#start_date').val('');
+            $('#end_date').val('');
+            $('#filter_status').val('');
+            $('#filter_priority').val('');
+            table.ajax.reload();
+        });
+
+        $(document).on('click','#filter',function(){
+            table.ajax.reload();
+        });
 
         $("#due_date").flatpickr({
             enableTime: false,
@@ -208,6 +222,38 @@
                     console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
                 }
             });
+        });
+
+        // edit task
+        $(document).on('click','.edit_data',function(){
+            var id = $(this).data('id');
+            $('#store_or_update_form')[0].reset();
+            $('#store_or_update_form').find('.is-invalid').removeClass('is-invalid');
+            $('#store_or_update_form').find('.error').remove();
+            if (id) {
+                $.ajax({
+                    url: "{{ route('app.tasks.edit') }}",
+                    type: "POST",
+                    data: {id: id,_token:_token},
+                    dataType: "JSON",
+                    success: function (data) {
+                        $('#store_or_update_form #update_id').val(data.data.id);
+                        $('#store_or_update_form #title').val(data.data.title);
+                        $('#store_or_update_form #description').val(data.data.description);
+                        $('#store_or_update_form #priority').val(data.data.priority);
+                        $('#store_or_update_form #due_date').val(data.data.due_date);
+                        $('#store_or_update_form #status').val(data.data.status);
+                        popup_modal.show();
+                        $('#store_or_update_modal .modal-title').html(
+                            '<span>Edit</span>');
+                        $('#store_or_update_modal #save_btn').html('<span></span> Update');
+
+                    },
+                    error: function (xhr, ajaxOption, thrownError) {
+                        console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
+                    }
+                });
+            }
         });
 
         $(document).on('click', '.delete_data', function () {
