@@ -25,7 +25,8 @@
                         </div>
                       </div>
                       <hr class="dropdown-divider">
-                      <button class="dropdown-item text-danger" onclick="document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</button>
+                      <a href="{{ route('app.profile') }}" class="dropdown-item"><i class="fa fa-user-circle fa-sm"></i> Profile</a>
+                      <button class="dropdown-item text-danger" onclick="document.getElementById('logout-form').submit();"><i class="fa fa-sign-out  fa-sm"></i> Logout</button>
                       <form action="{{ route('logout') }}" id="logout-form" method="post">
                         @csrf
                       </form>

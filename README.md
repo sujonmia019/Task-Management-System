@@ -12,6 +12,9 @@ The Task Management System is a web application that allows users to manage thei
 - **Task Create, Update Form Validation Using**
 - **Fully functional UI optimized for desktop**
 
+## Features
+Database Design Schema [Click](https://drawsql.app/teams/instructory/diagrams/tast-management-system)
+
 ## Task GUI
 - **1. Login**
 <img src="https://myolbd.com/image/login.png" width="100%">

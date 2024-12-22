@@ -1,6 +1,5 @@
 <?php
 
-
 define('STATUS',[
     1 => 'Pending',
     2 => 'In Progress',
@@ -25,6 +24,11 @@ define('PRIORITY_LABEL',[
     2 => '<span class="rounded-0 fw-normal badge badge-sm bg-warning text-dark">High</span>',
     3 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Medium</span>',
     4 => '<span class="rounded-0 fw-normal badge badge-sm bg-success">Low</span>',
+]);
+
+define('GENDER',[
+    1 => 'Male',
+    2 => 'Female',
 ]);
 
 if(!function_exists('dateFormat')){
