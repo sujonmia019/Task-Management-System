@@ -1,4 +1,4 @@
-# Task Management System
+# Project: Task Management System
 
 ## Project Description
 The Task Management System is a web application that allows users to manage their tasks efficiently. It includes features for user authentication, task creation, updating, deletion, and filtering. Users can filter tasks by status (e.g., Pending, In Progress, Completed) and sort them by due date.
@@ -67,8 +67,8 @@ The Task Management System is a web application that allows users to manage thei
     php artisan migrate
 
 
-
-
+## License
+The Laravel framework is open-sourced software licensed under the [ MIT license ].
 
 
 
