@@ -18,6 +18,7 @@ Route::name('app.tasks.')->middleware('auth')->group(function(){
     Route::post('store-or-update', [TaskController::class, 'storeOrUpdate'])->name('store-or-update');
     Route::post('edit', [TaskController::class, 'edit'])->name('edit');
     Route::post('delete', [TaskController::class, 'delete'])->name('delete');
+    Route::get('list/layout', [TaskController::class, 'listLayout'])->name('list.layout');
 });
 
 

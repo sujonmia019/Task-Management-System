@@ -2,6 +2,14 @@
 @section('title','Task List')
 
 @push('styles')
+<style>
+    #dt-length-0 {
+        border-radius: 0 !important;
+    }
+    #task-datatable_info {
+        font-size: 14px;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -33,6 +41,14 @@
 
 @push('scripts')
     <script>
+        // autoUpdateInput: false,
+        // locale: daterangeLocale,
+        // linkedCalendars: false,
+        // startDate: start,
+        // endDate: end,
+        // showDropdowns: true,
+        // ranges: daterangeConfig
+
         var popup_modal;
         var table;
 
@@ -79,21 +95,34 @@
                     previous: "Previous",
                     next: "Next"
                 },
-                lengthMenu: `<div class="d-flex align-items-center w-100 justify-content-between">
-                        _MENU_
-                        <button type="button" class="btn btn-sm btn-danger d-none rounded-0 delete_btn ms-2 px-3" onclick="multi_delete()">Bulk Delete</button>
-                    </div>`,
+                lengthMenu: `_MENU_`,
             },
-            dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6 text-end'B>>" +
+            dom: "<'row mb-3'<'col-12'l><'col-12 text-end'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 text-end'p>>",
-            buttons: [
-                {
-                    text: '<i class="fas fa-file-download fa-sm"></i> Export',
-                    className: 'btn btn-sm btn-info export_btn'
-                }
-            ]
+                "<'row mt-3 align-items-center'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 text-end'p>>",
         });
+
+        // custom field datatable
+        $('.dt-length label').append(`
+            <div class="d-flex align-items-center">
+                <input type="text" id="daterange" class="form-control form-control-sm rounded-0 shadow-none me-2" style="min-width:200px;" placeholder="Due Date">
+                <select class="form-control form-control-sm rounded-0 shadow-none" id="filter_status" style="min-width:200px;">
+                    <option value="">Select Status</option>
+                    @foreach (STATUS as $key=>$value)
+                    <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
+                <select class="form-control form-control-sm rounded-0 shadow-none" id="filter_priority" style="min-width:200px;">
+                    <option value="">Select Priority</option>
+                    @foreach (PRIORITY as $key=>$value)
+                    <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
+                <button type="button" class="btn btn-sm btn-primary rounded-0 shadow-none" id="filter">Filter</button>
+                <button type="button" class="btn btn-sm btn-danger rounded-0 shadow-none mx-2" id="reset">Reset</button>
+                <a href="{{ route('app.tasks.list.layout') }}" class="btn btn-sm btn-success rounded-0 shadow-none" id="reset" title="Task Board"><i class="fa fa-list"></i></a>
+            </div>
+        `);
 
         $("#due_date").flatpickr({
             enableTime: true,

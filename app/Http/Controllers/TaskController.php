@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class TaskController extends Controller
@@ -31,7 +32,10 @@ class TaskController extends Controller
                     return dateTimeFormat($row->created_at);
                 })
                 ->addColumn('action', function($row){
-                    $action = '<button type="button" class="btn-style btn-style-danger delete_data" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button>';
+                    $action = '<div class="d-flex align-items-center">';
+                        $action .= '<button type="button" class="btn-style btn-style-edit edit_data me-1" data-id="' . $row->id . '"><i class="fa fa-edit"></i></button>';
+                        $action .= '<button type="button" class="btn-style btn-style-danger delete_data" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button>';
+                    $action .= '</div>';
                     return $action;
                 })
                 ->rawColumns(['status','priority','action'])
@@ -73,5 +77,12 @@ class TaskController extends Controller
     public function delete(Request $request)
     {
         //
+    }
+
+    public function listLayout(){
+        $data['pendings']   = DB::table('tasks')->where('status',1)->get();
+        $data['inProgress'] = DB::table('tasks')->where('status',2)->get();
+        $data['completed']  = DB::table('tasks')->where('status',3)->get();
+        return view('task-list',$data);
     }
 }
