@@ -50,7 +50,7 @@
             ],
             pageLength: 15, // Rows per page
             ajax: {
-                url: "{{ route('home') }}",
+                url: "{{ route('app.tasks.index') }}",
                 type: "GET",
                 dataType: "JSON",
                 data: function (d) {
@@ -95,6 +95,12 @@
             ]
         });
 
+        $("#due_date").flatpickr({
+            enableTime: true,
+            noCalendar: false,
+            time_24hr: false,
+        });
+
         popup_modal = new bootstrap.Modal(document.getElementById('store_or_update_modal'),{
             keyboard: false,
             backdrop: 'static'
@@ -123,7 +129,7 @@
                 method = 'add';
             }
             $.ajax({
-                url: "",
+                url: "{{ route('app.tasks.store-or-update') }}",
                 type: "POST",
                 data: formData,
                 dataType: "JSON",

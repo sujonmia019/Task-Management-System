@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - {{ config('app.name') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Datatable --}}
     <link rel="stylesheet" href="{{ asset('/') }}css/dataTables.bootstrap5.css" >
     <link rel="stylesheet" href="{{ asset('/') }}css/responsive.bootstrap5.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/daterangepicker.css" />
     <link rel="stylesheet" href="{{ asset('/') }}css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('/') }}css/toastr.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/flatpickr.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/bootstrap.min.css">
@@ -77,16 +79,59 @@
     <script src="{{ asset('/') }}js/responsive.bootstrap5.js"></script>
     <script src="{{ asset('/') }}js/moment.min.js"></script>
     <script src="{{ asset('/') }}js/daterangepicker.min.js"></script>
-
+    <script src="{{ asset('/') }}js/toastr.min.js"></script>
     <script>
         var _token = "{{ csrf_token() }}";
 
-        $(".datetime").flatpickr({
-            enableTime: true,
-            noCalendar: false,
-            time_24hr: true,
-        });
+        // toastr alert
+        function notification(status, message) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "500",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
 
+            switch (status) {
+                case 'success':
+                    toastr.success(message);
+                    break;
+
+                case 'error':
+                    toastr.error(message);
+                    break;
+
+                case 'warning':
+                    toastr.warning(message);
+                    break;
+
+                case 'info':
+                    toastr.info(message);
+                    break;
+            }
+        }
+
+
+        @if (Session::get('success'))
+            notification('success',"{{ Session::get('success') }}")
+        @elseif (Session::get('error'))
+            notification('error',"{{ Session::get('error') }}")
+        @elseif (Session::get('info'))
+            notification('info',"{{ Session::get('info') }}")
+        @elseif (Session::get('warning'))
+            notification('warning',"{{ Session::get('warning') }}")
+        @endif
     </script>
     @stack('scripts')
 </body>

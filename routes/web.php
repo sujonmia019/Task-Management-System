@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
 
 Auth::routes([
@@ -12,4 +13,11 @@ Auth::routes([
     'password.update'  => false, // 404 disabled
 ]);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::name('app.tasks.')->middleware('auth')->group(function(){
+    Route::get('/', [TaskController::class, 'index'])->name('index');
+    Route::post('store-or-update', [TaskController::class, 'storeOrUpdate'])->name('store-or-update');
+    Route::post('edit', [TaskController::class, 'edit'])->name('edit');
+    Route::post('delete', [TaskController::class, 'delete'])->name('delete');
+});
+
+

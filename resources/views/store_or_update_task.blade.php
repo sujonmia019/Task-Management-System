@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content rounded-1">
             <div class="modal-header py-1">
-                <h6 class="modal-title" id="modal-title"></h6>
+                <h5 class="modal-title" id="modal-title"></h5>
                 <button type="button" class="btn-close shadow-none" style="font-size: 10px;" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -15,22 +15,28 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="required">Description</label>
-                        <textarea name="description" id="description" rows="3" class="form-control form-control-sm rounded-0 shadow-none"></textarea>
+                        <textarea name="description" id="description" rows="3" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Enter task description"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="due_date">Due Date</label>
-                        <input type="text" name="due_date" id="due_date" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Enter title">
+                        <input type="text" name="due_date" id="due_date" class="form-control form-control-sm rounded-0 shadow-none" placeholder="Y-m-d h:i">
                     </div>
                     <div class="mb-3">
                         <label for="priority" class="required">Priority</label>
                         <select name="priority" id="priority" class="form-control form-control-sm rounded-0 shadow-none">
                             <option value="">Select Priority</option>
+                            @foreach (PRIORITY as $key=>$value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="status" class="required">Status</label>
                         <select name="status" id="status" class="form-control form-control-sm rounded-0 shadow-none">
                             <option value="">Select Status</option>
+                            @foreach (STATUS as $key=>$value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </form>
