@@ -4,9 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    /**
+     * * Upload File Method * *
+     * @param UploadedFile $file
+     * @param null $folder
+     * @param null $filename
+     * @param null $disk
+     * @return false|string
+     */
+    public function uploadFile(UploadedFile $file, $folder = null, $file_name = null, $disk = 'public')
+    {
+        $filenameWithExt = $file->getClientOriginalName();
+        $filename        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension       = strtolower($file->getClientOriginalExtension());
+
+        $fileNameToStore = !is_null($file_name) ?
+            str()->slug($file_name,'-') . '.' . $extension :
+            str()->slug($filename,'-') . '-' . time() . '.' . $extension;
+
+        $url = $file->storeAs($folder,$fileNameToStore,$disk);
+        return $url;
+    }
+
+    /**
+     * ! Delete File Method !
+     * @param string $filename
+     * @param string $folder
+     * @param string $disk
+     * @return true|false
+     */
+    public function deleteFile($path,$disk = 'public')
+    {
+        if(Storage::disk($disk)->exists($path))
+        {
+            Storage::disk($disk)->delete($path);
+            return true;
+        }
+        return false;
+    }
+
 }

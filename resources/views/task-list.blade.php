@@ -47,7 +47,7 @@
                         <p class="mb-0"><i class="fa fa-paragraph fa-sm"></i> {{ $pendingTask->description }}</p>
                         {!! PRIORITY_LABEL[$pendingTask->priority] !!}
                         <div class="image-box mt-2">
-                            <img src="{{ asset('/') }}img/man.png" width="30px" alt="">
+                            <img src="{{ auth()->user()->image ? storage_url(auth()->user()->image) : asset('img/man.png') }}" width="30px" alt="">
                             <small class="float-end text-danger fw-normal"><i class="fa fa-calendar-alt fa-sm"></i> {{ date('D d M Y') }}</small>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <p class="mb-0"><i class="fa fa-paragraph fa-sm"></i> {{ $inProgressTask->description }}</p>
                         {!! PRIORITY_LABEL[$inProgressTask->priority] !!}
                         <div class="image-box mt-2">
-                            <img src="{{ asset('/') }}img/man.png" width="30px" alt="">
+                            <img src="{{ auth()->user()->image ? storage_url(auth()->user()->image) : asset('img/man.png') }}" width="30px" alt="">
                             <small class="float-end text-danger fw-normal"><i class="fa fa-calendar-alt fa-sm"></i> {{ date('D d M Y') }}</small>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <p class="mb-0"><i class="fa fa-paragraph fa-sm"></i> {{ $completedTask->description }}</p>
                         {!! PRIORITY_LABEL[$completedTask->priority] !!}
                         <div class="image-box mt-2">
-                            <img src="{{ asset('/') }}img/man.png" width="30px" alt="">
+                            <img src="{{ auth()->user()->image ? storage_url(auth()->user()->image) : asset('img/man.png') }}" width="30px" alt="">
                             <small class="float-end text-danger fw-normal"><i class="fa fa-calendar-alt fa-sm"></i> {{ date('D d M Y') }}</small>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 <?php
 
+define('USER_IMAGE_PATH','user');
 define('STATUS',[
     1 => 'Pending',
     2 => 'In Progress',
@@ -40,5 +41,11 @@ if(!function_exists('dateFormat')){
 if(!function_exists('dateTimeFormat')){
     function dateTimeFormat($date, $format = 'd-m-Y h:i'){
         return date($format,strtotime($date));
+    }
+}
+
+if(!function_exists('storage_url')){
+    function storage_url($path){
+        return Storage::disk('public')->url($path);
     }
 }

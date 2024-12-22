@@ -43,7 +43,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-2">
-                                    <label for="image" class="required">image</label>
+                                    <label for="image">image</label>
                                     <input type="file" name="image" id="image" class="form-control form-control-sm rounded-0 shadow-none">
                                     <input type="hidden" name="old_image" value="{{ $user->image ?? '' }}">
                                 </div>

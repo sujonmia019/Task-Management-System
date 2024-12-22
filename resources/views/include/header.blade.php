@@ -14,11 +14,11 @@
             <div class="col-6">
                 <div class="dropdown top-bar-right text-end">
                     <button class="btn btn-none dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('/') }}img/man.png" alt="">
+                      <img src="{{ auth()->user()->image ? storage_url(auth()->user()->image) : asset('img/man.png') }}" alt="">
                     </button>
                     <div class="dropdown-menu">
                       <div class="d-flex align-items-center gap-2 px-2">
-                        <div><img src="{{ asset('/') }}img/man.png" alt=""></div>
+                        <div><img src="{{ auth()->user()->image ? storage_url(auth()->user()->image) : asset('img/man.png') }}" alt=""></div>
                         <div>
                           <h6 class="mb-0">{{ Auth::user()->name ?? '' }}</h6>
                           <span class="mb-0">{{ Auth::user()->email ?? '' }}</span>
