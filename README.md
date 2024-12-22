@@ -13,7 +13,7 @@ The Task Management System is a web application that allows users to manage thei
 - **Fully functional UI optimized for desktop**
 
 ## Features
-Database Design Schema [Click](https://drawsql.app/teams/instructory/diagrams/tast-management-system)
+Database Design Schema <a href="https://drawsql.app/teams/instructory/diagrams/tast-management-system" target="_blank">[Click]</a>
 
 ## Task GUI
 - **1. Login**
