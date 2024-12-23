@@ -99,7 +99,7 @@ Database Design Schema <a href="https://drawsql.app/teams/instructory/diagrams/t
 8. Start the development server
 
     ```bash
-    php artisan serve or php artisan ser
+    php artisan serve
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
