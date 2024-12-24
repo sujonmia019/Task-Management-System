@@ -103,7 +103,7 @@ API Docs <a href="https://www.postman.com/my-team-1598/task-management-system-ap
     ```bash
     php artisan migrate:fresh --seed
 
-8. Run the migrations
+8. Run the migrations without seeding
 
     ```bash
     php artisan migrate
