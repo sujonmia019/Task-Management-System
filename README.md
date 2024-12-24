@@ -98,12 +98,17 @@ API Docs <a href="https://www.postman.com/my-team-1598/task-management-system-ap
     DB_USERNAME=your_database_user
     DB_PASSWORD=your_database_password
 
-7. Generate the application key
+7. Run the migrations with user seeding
+
+    ```bash
+    php artisan migrate:fresh --seed
+
+8. Run the migrations
 
     ```bash
     php artisan migrate
 
-8. Start the development server
+9. Start the development server
 
     ```bash
     php artisan serve
