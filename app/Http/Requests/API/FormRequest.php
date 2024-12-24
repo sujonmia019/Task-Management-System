@@ -13,7 +13,7 @@ abstract class FormRequest extends LaravelFormRequest
     abstract public function authorize();
 
     protected function failedValidation(Validator $validator)
-    {
+    {  
         throw new HttpResponseException(
             response()->json([
                 'status'=>422,
