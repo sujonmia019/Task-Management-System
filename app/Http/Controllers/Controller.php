@@ -13,6 +13,25 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     /**
+     * Generates a JSON response to send back to the client.
+     *
+     * @param string $status
+     * @param string $message
+     * @param mixed $data
+     * @param int $response_code
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function response_json($status='success',$message=null,$data=[],$response_code=200)
+    {
+        return response()->json([
+            'status'        => $status,
+            'message'       => $message,
+            'data'          => $data,
+            'response_code' => $response_code,
+        ],$response_code);
+    }
+
+    /**
      * * Upload File Method * *
      * @param UploadedFile $file
      * @param null $folder
