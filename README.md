@@ -20,8 +20,7 @@ Database Design Schema <a href="https://drawsql.app/teams/instructory/diagrams/t
 #### Open Postman
 Download or browser login and install Postman if you don’t already have it.
 
-API Docs <a href="" target="_blank">Document</a>
-
+please check email **recritment@cloudcore.sa** for API Documentation
 
 ## Task GUI
 - **1. Login**
