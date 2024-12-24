@@ -13,8 +13,12 @@ The Task Management System is a web application that allows users to manage thei
 - **Task List Server-Side Datatable Uses**
 - **Fully functional UI optimized for desktop**
 
-## Features
+## Database
 Database Design Schema <a href="https://drawsql.app/teams/instructory/diagrams/tast-management-system" target="_blank">Click</a>
+
+## API Documentation 
+#### Open Postman
+Download or browser login and install Postman if you don’t already have it.
 
 ## Task GUI
 - **1. Login**
