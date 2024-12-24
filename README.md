@@ -107,7 +107,12 @@ please check email **recritment@cloudcore.com.sa** for API Documentation
     ```bash
     php artisan migrate
 
-9. Start the development server
+9. If user profile update with showing
+
+    ```bash
+    php artisan storage:link
+
+10. Start the development server
 
     ```bash
     php artisan serve
